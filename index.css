@@ -2,3 +2,12 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
+.colors-divs{
+    display: flex;
+    height: 400px;
+}
+
+.colors-names{
+    display: flex;
+}
