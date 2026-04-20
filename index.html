@@ -5,38 +5,23 @@
     <body>
         <h1>index.html</h1>
 
-    <form>
-        <input type="color" id="color" name="color">
-        <select name="mode" id="mode">
-            <option value="monochrome">monochrome</option>
-            <option value="monochrome-dark">monochrome-dark</option>
-            <option value="monochrome-light">monochrome-light</option>
-            <option value="analogic">analogic</option>
-            <option value="complement">complement</option>
-            <option value="analogic-complement">analogic-complement</option>
-            <option value="triad">triad</option>
-            <option value="quad">quad</option>
-        </select>
-        <button type="submit">Get Color Scheme</button>
-    </form>
+        <form>
+            <input type="color" id="color-inpt" name="color-inpt">
+            <select name="mode" id="mode">
+                <option value="monochrome">monochrome</option>
+                <option value="monochrome-dark">monochrome-dark</option>
+                <option value="monochrome-light">monochrome-light</option>
+                <option value="analogic">analogic</option>
+                <option value="complement">complement</option>
+                <option value="analogic-complement">analogic-complement</option>
+                <option value="triad">triad</option>
+                <option value="quad">quad</option>
+            </select>
+            <button type="submit">Get Color Scheme</button>
+        </form>
 
-    <div class="colors-divs">
-        <div id="1-color">1-color</div>
-        <div id="2-color">2-color</div>
-        <div id="3-color">3-color</div>
-        <div id="4-color">4-color</div>
-        <div id="5-color">5-color</div>
-        </div>
-    </div>
-    <div class="colors-names">
-        <div id="1-name">1-name</div>
-        <div id="2-name">2-name</div>
-        <div id="3-name">3-name</div>
-        <div id="4-name">4-name</div>
-        <div id="5-name">5-name</div>
-        </div>
-    </div>
-
+        <div id="colors-container"></div>
+        <div id="colors-names-container"></div>
 
         <script src="index.js"></script>
     </body>

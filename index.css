@@ -1,13 +1,23 @@
+
 html, body {
     margin: 0;
     padding: 0;
 }
 
-.colors-divs{
+#colors-container {
     display: flex;
     height: 400px;
+    /* background-color: red; */
+    padding: 0;
 }
 
-.colors-names{
+#colors-names-container {
     display: flex;
+}
+
+.color-div,
+.color-name
+ {
+    /* width: 60px; */
+    padding: 5px 15px;
 }

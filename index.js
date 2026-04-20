@@ -5,25 +5,62 @@
 // Example:
 // "/scheme?hex=FF0&mode=monochrome&count=5"
 
-const color = document.getElementById('color')
+const colorInpt = document.getElementById('color-inpt')
 const mode = document.getElementById('mode')
 const count = "5"
+const colorsContainer = document.getElementById('colors-container')
+const colorsNamesContainer = document.getElementById('colors-names-container')
 
-let colorRequets = color.value.slice(1)
-
+let colorRequets = colorInpt.value.slice(1)
 let apiRequest = `https://www.thecolorapi.com/scheme?hex=${colorRequets}&mode=${mode.value}&count=${count}`
-console.log(apiRequest)
+let colorsArray = []
 
-fetch(apiRequest)
+document.addEventListener('submit', function(e){
+    e.preventDefault()
+    queryApi()
+    console.log(`Color: ${colorInpt.value}; Mode: ${mode.value}`)
+})
+
+function queryApi() {
+    colorsArray = []
+    colorRequets = colorInpt.value.slice(1)
+    apiRequest = `https://www.thecolorapi.com/scheme?hex=${colorRequets}&mode=${mode.value}&count=${count}`
+    console.log("Sending query ...")
+    console.log(`color=${colorRequets}, mode=${mode.value}, count=${count}`)
+    fetch(apiRequest)
     .then(res => res.json())
-    .then(data => getColorsHex(data.colors))
-
-function getColorsHex(dataColors){
-        for (let index = 0; index < dataColors.length; index++)
-            console.log(dataColors[index].hex.value)
+    .then(data => {
+        dataColorsToArray(data.colors)
+        colorsContainer.innerHTML =  getColorsContanierHtml()
+        colorsNamesContainer.innerHTML = getColorsNamesHtml()
+    })
 }
 
-console.log(`color: ${colorRequets}`)
-console.log(`mode: ${mode.value}`)
-console.log(`count: ${count}`)
+function dataColorsToArray(dataColors){
+    for (let index = 0; index < dataColors.length; index++){
+        colorsArray.push(dataColors[index].hex.value)
+    }
+}
 
+function getColorsContanierHtml(){
+    htmlResult = ""
+    colorsArray.forEach(colorElement => {
+        htmlResult += `
+            <div class="color-div" style="background-color:${colorElement}"> ${colorElement}  </div>
+        `
+    })
+    return htmlResult
+}
+
+function getColorsNamesHtml(){
+    htmlResult = ""
+    colorsArray.forEach(colorElement => {
+        htmlResult += `
+            <div class="color-name"> ${colorElement} </div>
+        `
+    })
+    return htmlResult
+}
+
+
+queryApi()
